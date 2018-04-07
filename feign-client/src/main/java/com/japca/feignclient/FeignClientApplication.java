@@ -1,5 +1,6 @@
 package com.japca.feignclient;
 
+import com.japca.data.PostData;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -25,6 +26,11 @@ public class FeignClientApplication {
 	@RequestMapping("call")
 	public String callReceive() {
 		return receiverClient.receive();
+	}
+
+	@RequestMapping(value = "callPost")
+	public String callReceivePost() {
+		return receiverClient.receive(new PostData("Hi post", 23));
 	}
 
 
