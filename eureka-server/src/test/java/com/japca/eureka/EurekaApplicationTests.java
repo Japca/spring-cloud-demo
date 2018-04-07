@@ -1,4 +1,4 @@
-package com.example.eureka;
+package com.japca.eureka;
 
 //@RunWith(SpringRunner.class)
 //@SpringBootTest

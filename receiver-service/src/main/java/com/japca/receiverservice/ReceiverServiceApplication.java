@@ -1,4 +1,4 @@
-package com.example.receiverservice;
+package com.japca.receiverservice;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;

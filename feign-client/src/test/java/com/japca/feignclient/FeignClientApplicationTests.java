@@ -1,4 +1,4 @@
-package com.example.receiverservice;
+package com.japca.feignclient;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -7,7 +7,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
-public class ReceiverServiceApplicationTests {
+public class FeignClientApplicationTests {
 
 	@Test
 	public void contextLoads() {
