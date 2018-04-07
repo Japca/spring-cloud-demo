@@ -50,6 +50,7 @@
 
                 <executions>
                     <execution>
+                        <id>docker-build</id>
                         <goals>
                             <goal>build</goal>
                         </goals>
@@ -64,6 +65,7 @@
                             <name>${docker.image.prefix}/${project.artifactId}</name>
                             <alias>${project.artifactId}</alias>
                             <build>
+
                                 <dockerFileDir>${project.basedir}</dockerFileDir>
                                 <!--copies artficact to docker build dir in target-->
                                 <assembly>
@@ -77,7 +79,7 @@
 
                             <run>
                                 <ports>
-                                    <port>8080:8080</port>
+                                    <port>8761:8080</port>
                                 </ports>
                             </run>
                         </image>

@@ -49,6 +49,15 @@
 				<artifactId>docker-maven-plugin</artifactId>
 				<version>0.24.0</version>
 
+				<executions>
+					<execution>
+						<id>docker-build</id>
+						<goals>
+							<goal>build</goal>
+						</goals>
+					</execution>
+				</executions>
+
 				<configuration>
 					<dockerHost>unix:///var/run/docker.sock</dockerHost>
 					<verbose>true</verbose>
@@ -72,10 +81,11 @@
 
 							<run>
 								<ports>
-									<port>8081:8081</port>
+									<port>8081:8080</port>
 								</ports>
 							</run>
 						</image>
+
 					</images>
 				</configuration>
 			</plugin>

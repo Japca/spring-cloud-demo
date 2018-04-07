@@ -48,6 +48,8 @@
         <skipTests>true</skipTests>
 
         <docker.image.prefix>jakubkrhovjak</docker.image.prefix>
+        <!--<eureka.server>eureka-server</eureka.server>-->
+        <!--<receiver.service>receiver-service</receiver.service>-->
     </properties>
 
     <dependencies>
@@ -63,5 +65,68 @@
             <scope>runtime</scope>
         </dependency>
     </dependencies>
+
+    <!--<build>-->
+        <!--<plugins>-->
+            <!--<plugin>-->
+                <!--<groupId>io.fabric8</groupId>-->
+                <!--<artifactId>docker-maven-plugin</artifactId>-->
+                <!--<version>0.24.0</version>-->
+
+                <!--<executions>-->
+                    <!--<execution>-->
+                        <!--<goals>-->
+                            <!--<goal>build</goal>-->
+                        <!--</goals>-->
+                    <!--</execution>-->
+                <!--</executions>-->
+
+                <!--<configuration>-->
+                    <!--<dockerHost>unix:///var/run/docker.sock</dockerHost>-->
+                    <!--<verbose>true</verbose>-->
+                    <!--<images>-->
+                        <!--<image>-->
+                            <!--<name>${eureka.server}</name>-->
+                            <!--<alias>${eureka.server}</alias>-->
+                            <!--<build>-->
+                                <!--<dockerFileDir>${eureka.server}</dockerFileDir>-->
+                                <!--&lt;!&ndash;copies artficact to docker build dir in target&ndash;&gt;-->
+                                <!--<assembly>-->
+                                    <!--<descriptorRef>artifact</descriptorRef>-->
+                                <!--</assembly>-->
+                                <!--<tags>-->
+                                    <!--<tag>${project.version}</tag>-->
+                                <!--</tags>-->
+                            <!--</build>-->
+
+                            <!--<run>-->
+                                <!--<ports>-->
+                                    <!--<port>8080:8080</port>-->
+                                <!--</ports>-->
+                            <!--</run>-->
+                        <!--</image>-->
+
+                        <!--<image>-->
+                        <!--<name>${receiver.service}</name>-->
+                        <!--<alias>${receiver.service}</alias>-->
+                        <!--<build>-->
+
+                            <!--<dockerFileDir>${project.basedir}</dockerFileDir>-->
+                            <!--&lt;!&ndash;copies artficact to docker build dir in target&ndash;&gt;-->
+                            <!--<assembly>-->
+                                <!--<descriptorRef>artifact</descriptorRef>-->
+                            <!--</assembly>-->
+                            <!--<tags>-->
+                                <!--<tag>${project.version}</tag>-->
+                            <!--</tags>-->
+
+                        <!--</build>-->
+                    <!--</images>-->
+                <!--</configuration>-->
+
+
+            <!--</plugin>-->
+        <!--</plugins>-->
+    <!--</build>-->
 
 </project>
