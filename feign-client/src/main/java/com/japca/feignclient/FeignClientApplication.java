@@ -32,6 +32,4 @@ public class FeignClientApplication {
 	public String callReceivePost() {
 		return receiverClient.receive(new PostData("Hi post", 23));
 	}
-
-
 }

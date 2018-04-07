@@ -1,5 +1,6 @@
 package com.japca.ribbonclient;
 
+import com.japca.data.PostData;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
@@ -29,6 +30,14 @@ public class RibbonClientApplication {
 	@RequestMapping("call")
 	public String callReceiver() {
 		return restTemplate().getForObject("http://receiver-service/receive", String.class);
+	}
+
+	@RequestMapping("callPost")
+	public String callReceiverPost() {
+		return restTemplate()
+				.postForEntity("http://receiver-service/receive", new PostData("RestTemplate", 23), String.class)
+				.getBody();
+
 	}
 
 //	public class HelloServiceConfiguration {
