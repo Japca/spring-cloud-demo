@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="SqlDialectMappings">
+    <file url="das://0fabfa05-46c7-40e9-883d-e83f02e8be1c/database/postgres/schema/public/sequence/record_id_seq" dialect="PostgreSQL" />
+  </component>
+</project>
