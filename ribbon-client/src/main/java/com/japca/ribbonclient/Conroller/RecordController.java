@@ -25,7 +25,7 @@ public class RecordController {
 	}
 
 	@RequestMapping("save")
-	public void save() {
-		recordService.save(new Record("new Record", "Detail"));
+	public Record save() {
+		return recordService.save(new Record("new Record", "Detail"));
 	}
 }

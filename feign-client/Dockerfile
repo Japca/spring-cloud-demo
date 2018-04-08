@@ -1,4 +1,4 @@
-FROM openjdk
+FROM openjdk:8-jdk-alpine
 
 VOLUME /tmp
 ADD maven/feign-client.jar feign-client.jar

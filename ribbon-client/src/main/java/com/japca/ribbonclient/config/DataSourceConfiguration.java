@@ -22,7 +22,7 @@ public class DataSourceConfiguration {
 		hikariConfig.setPassword("heslo");
 
 		hikariConfig.setMaximumPoolSize(3);
-		hikariConfig.setIdleTimeout(5000);
+		hikariConfig.setIdleTimeout(10000);
 		hikariConfig.setConnectionTestQuery("SELECT 1");
 		hikariConfig.setPoolName("springHikariCP");
 //

@@ -94,7 +94,7 @@
                                 </assembly>
                                 <tags>
                                     <tag>latest</tag>
-                                    <tag>${project.version}</tag>
+                                    <!--<tag>${project.version}</tag>-->
                                 </tags>
 
                             </build>

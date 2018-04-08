@@ -5,7 +5,6 @@ import com.japca.ribbonclient.entity.Record;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import javax.transaction.Transactional;
 import java.util.List;
 
 /**
@@ -13,14 +12,13 @@ import java.util.List;
  */
 
 @Service
-@Transactional
 public class RecordService {
 
 	@Autowired
 	private RecordDao recordDao;
 
 	public Record save(Record record) {
-		return recordDao.saveAndFlush(record);
+		return recordDao.save(record);
 	}
 
 	public List<Record> getRecords() {
