@@ -16,18 +16,6 @@
         <version>1.0.0</version>
     </parent>
 
-    <!--<dependencyManagement>-->
-    <!--<dependencies>-->
-    <!--<dependency>-->
-    <!--<groupId>org.jboss.arquillian</groupId>-->
-    <!--<artifactId>arquillian-bom</artifactId>-->
-    <!--<version>1.1.13.Final</version>-->
-    <!--<type>pom</type>-->
-    <!--<scope>import</scope>-->
-    <!--</dependency>-->
-    <!--</dependencies>-->
-    <!--</dependencyManagement>-->
-
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
@@ -102,12 +90,38 @@
                             <goal>build</goal>
                         </goals>
                     </execution>
+
+                        <execution>
+                            <id>start</id>
+                            <phase>pre-integration-test</phase>
+                            <goals>
+                                <goal>build</goal>
+                                <goal>start</goal>
+                            </goals>
+                        </execution>
+                        <execution>
+                            <id>stop</id>
+                            <phase>post-integration-test</phase>
+                            <goals>
+                                <goal>stop</goal>
+                            </goals>
+                        </execution>
+
                 </executions>
 
                 <configuration>
                     <dockerHost>unix:///var/run/docker.sock</dockerHost>
                     <verbose>true</verbose>
                     <images>
+                        <!--<image>-->
+                            <!--<name>postgres</name>-->
+                            <!--<alias>postgres</alias>-->
+                        <!--</image>-->
+
+                        <!--<run>-->
+
+                        <!--</run>-->
+
                         <image>
                             <name>${docker.image.prefix}/${project.artifactId}</name>
                             <alias>${project.artifactId}</alias>
@@ -129,6 +143,9 @@
                                 <ports>
                                     <port>8083:8080</port>
                                 </ports>
+                                <dependsOn>
+                                    <container>postgres</container>
+                                </dependsOn>
                             </run>
                         </image>
 
