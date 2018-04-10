@@ -1,0 +1,24 @@
+version: '3'
+
+services:
+  ribbon-client:
+    image: jakubkrhovjak/ribbon-client
+    depends_on:
+      - postgres
+    ports:
+     - "8083:8080"
+    volumes:
+     - .:/data
+    network_mode: bridge
+
+  postgres:
+    container_name: postgres
+    image: postgres:10.3-alpine
+    volumes:
+      - postgres-db:/var/lib/postgresql/data
+    network_mode: bridge
+
+
+volumes:
+  postgres-db:
+    external: true

@@ -1,4 +1,4 @@
-FROM openjdk
+FROM openjdk:8-jdk-alpine
 
 VOLUME /tmp
 ADD maven/ribbon-client.jar ribbon-client.jar
