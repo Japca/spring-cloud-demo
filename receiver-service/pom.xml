@@ -62,11 +62,22 @@
 				<version>${spring-cloud-contract.version}</version>
 				<extensions>true</extensions>
 				<configuration>
+
+					<contractsDirectory>src/test/resources/contracts</contractsDirectory>
 					<baseClassForTests>
-						com.japca.receiverservice.controller.CallControllerTest
+						com.japca.receiverservice.controller.ReceiverControllerTest
 					</baseClassForTests>
 					<!--<packageWithBaseClasses>com.japca.receiverservice.controller.CallControllerTest</packageWithBaseClasses>-->
 				</configuration>
+				<executions>
+					<execution>
+						<goals>
+							<goal>convert</goal>
+							<goal>generateStubs</goal>
+							<goal>generateTests</goal>
+						</goals>
+					</execution>
+				</executions>
 			</plugin>
 
 			<plugin>

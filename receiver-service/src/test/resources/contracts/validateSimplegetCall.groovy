@@ -15,7 +15,7 @@ Contract.make {
         }
     }
     response {
-        body("receiverController-service")
+        body("/restCall-get")
         status 200
     }
 }
