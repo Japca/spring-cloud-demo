@@ -46,12 +46,18 @@
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <java.version>1.8</java.version>
         <skipTests>true</skipTests>
-
         <docker.image.prefix>jakubkrhovjak</docker.image.prefix>
-        <!--<eureka.server>eureka-server</eureka.server>-->
-        <!--<receiver.service>receiver-service</receiver.service>-->
         <skipTests>true</skipTests>
     </properties>
+
+    <modules>
+        <module>data</module>
+        <module>eureka-server</module>
+        <module>receiver-service</module>
+        <module>feign-client</module>
+        <!--<module>ribbon-client</module>-->
+    </modules>
+
 
     <dependencies>
 
