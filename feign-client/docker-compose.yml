@@ -1,0 +1,28 @@
+version: '3'
+
+services:
+  ribbon-client:
+    image: jakubkrhovjak/feign-client
+    depends_on:
+      - postgres
+    ports:
+     - "8082:8080"
+    volumes:
+     - .:/data
+    network_mode: bridge
+
+  postgres:
+    container_name: postgres
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+    image: postgres:10.3-alpine
+    volumes:
+      - postgres-db:/var/lib/postgresql/datails\
+    network_mode: bridge
+
+volumes:
+  postgres-db:
+    external: true

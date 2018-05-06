@@ -33,6 +33,13 @@
             <artifactId>data</artifactId>
             <version>1.0.0</version>
         </dependency>
+
+        <dependency>
+            <groupId>org.postgresql</groupId>
+            <artifactId>postgresql</artifactId>
+            <version>42.2.2</version>
+        </dependency>
+
     </dependencies>
 
     <build>
@@ -61,6 +68,20 @@
                     <verbose>true</verbose>
                     <images>
                         <image>
+                            <name>postgres:10.3-alpine</name>
+                            <alias>postgres</alias>
+                            <run>
+                                <ports>
+                                    <port>5432:5432</port>
+                                </ports>
+                                <env>
+                                    <POSTGRES_USER>postgres</POSTGRES_USER>
+                                    <POSTGRES_PASSWORD>postgres</POSTGRES_PASSWORD>
+                                </env>
+                            </run>
+                        </image>
+
+                        <image>
                             <name>${docker.image.prefix}/${project.artifactId}</name>
                             <alias>${project.artifactId}</alias>
                             <build>
@@ -79,6 +100,9 @@
                                 <ports>
                                     <port>8082:8080</port>
                                 </ports>
+                                <dependsOn>
+                                    <container>postgres</container>
+                                </dependsOn>
                             </run>
                         </image>
                     </images>
