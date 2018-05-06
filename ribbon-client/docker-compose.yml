@@ -13,11 +13,15 @@ services:
 
   postgres:
     container_name: postgres
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
     image: postgres:10.3-alpine
     volumes:
-      - postgres-db:/var/lib/postgresql/data
+      - postgres-db:/var/lib/postgresql/datails\
     network_mode: bridge
-
 
 volumes:
   postgres-db:

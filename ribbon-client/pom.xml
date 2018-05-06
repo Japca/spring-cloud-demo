@@ -42,11 +42,11 @@
             <version>1.0.0</version>
         </dependency>
 
-        <dependency>
-            <groupId>com.zaxxer</groupId>
-            <artifactId>HikariCP</artifactId>
-            <version>2.7.2</version>
-        </dependency>
+        <!--<dependency>-->
+            <!--<groupId>com.zaxxer</groupId>-->
+            <!--<artifactId>HikariCP</artifactId>-->
+            <!--<version>2.7.2</version>-->
+        <!--</dependency>-->
 
         <dependency>
             <groupId>org.postgresql</groupId>
@@ -113,20 +113,24 @@
                     <dockerHost>unix:///var/run/docker.sock</dockerHost>
                     <verbose>true</verbose>
                     <images>
-                        <!--<image>-->
-                            <!--<name>postgres</name>-->
-                            <!--<alias>postgres</alias>-->
-                        <!--</image>-->
-
-                        <!--<run>-->
-
-                        <!--</run>-->
+                        <image>
+                            <name>postgres:10.3-alpine</name>
+                            <alias>postgres</alias>
+                            <run>
+                                <ports>
+                                    <port>5432:5432</port>
+                                </ports>
+                                <env>
+                                    <POSTGRES_USER>postgres</POSTGRES_USER>
+                                    <POSTGRES_PASSWORD>postgres</POSTGRES_PASSWORD>
+                                </env>
+                            </run>
+                        </image>
 
                         <image>
                             <name>${docker.image.prefix}/${project.artifactId}</name>
                             <alias>${project.artifactId}</alias>
                             <build>
-
                                 <dockerFileDir>${project.basedir}</dockerFileDir>
                                 <!--copies artficact to docker build dir in target-->
                                 <assembly>
@@ -136,9 +140,7 @@
                                     <tag>latest</tag>
                                     <!--<tag>${project.version}</tag>-->
                                 </tags>
-
                             </build>
-
                             <run>
                                 <ports>
                                     <port>8083:8080</port>
@@ -148,8 +150,14 @@
                                 </dependsOn>
                             </run>
                         </image>
-
                     </images>
+
+
+                    <volumes>
+                        <volume>
+                            <name>postgres-db</name>
+                        </volume>
+                    </volumes>
                 </configuration>
             </plugin>
 
