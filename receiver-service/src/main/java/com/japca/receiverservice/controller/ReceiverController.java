@@ -15,14 +15,17 @@ import org.springframework.web.bind.annotation.RestController;
  */
 
 @RestController
-public class CallController {
+public class ReceiverController {
+
+	public static final String REST_CALL = "/restCall";
 
 	@Autowired
 	private DiscoveryClient client;
 
-	@GetMapping("/restCall")
+	@GetMapping(REST_CALL)
 	public String restCall() {
-		return "receiver-service";
+		throw new RuntimeException();
+//		return "receiver-service";
 	}
 
 	@RequestMapping(value = "/receive", method = RequestMethod.GET)

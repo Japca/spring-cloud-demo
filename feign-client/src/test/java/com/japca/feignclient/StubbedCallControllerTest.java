@@ -2,10 +2,13 @@ package com.japca.feignclient;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.cloud.contract.wiremock.AutoConfigureWireMock;
 import org.springframework.http.MediaType;
 import org.springframework.test.context.junit4.SpringRunner;
+import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 
 import static com.github.tomakehurst.wiremock.client.WireMock.*;
@@ -20,9 +23,11 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @SpringBootTest(classes = {FeignClientApplication.class},
 		webEnvironment=SpringBootTest.WebEnvironment.MOCK)
 @AutoConfigureWireMock(port = 8082)
-public class SimpleWireMockIntegrationTest extends IntegrationTest {
+@AutoConfigureMockMvc
+public class StubbedCallControllerTest {
 
-
+	@Autowired
+	private MockMvc mvc;
 
 	@Test
 	public void simpleRestCallTest() throws Exception {
