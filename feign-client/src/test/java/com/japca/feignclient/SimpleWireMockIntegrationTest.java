@@ -2,13 +2,11 @@ package com.japca.feignclient;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.cloud.contract.wiremock.AutoConfigureWireMock;
 import org.springframework.http.MediaType;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
-import org.springframework.web.client.RestTemplate;
 
 import static com.github.tomakehurst.wiremock.client.WireMock.*;
 import static org.hamcrest.Matchers.containsString;
@@ -25,8 +23,6 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 public class SimpleWireMockIntegrationTest extends IntegrationTest {
 
 
-	@Autowired
-	private RestTemplate restTemplate;
 
 	@Test
 	public void simpleRestCallTest() throws Exception {

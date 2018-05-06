@@ -1,0 +1,11 @@
+#stubrunner.ids-to-service-ids.artifactId=receiver-service
+#stubrunner.work-offline=true
+
+eureka:
+  client:
+    enabled: false
+
+spring:
+  cloud:
+    config:
+      failFast:false
