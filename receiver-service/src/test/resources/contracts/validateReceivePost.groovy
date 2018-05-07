@@ -12,7 +12,7 @@ Contract.make {
         method POST()
         url("/receive") {
             headers {
-                header 'Content-Type': 'application/json'
+                header 'Content-Type': 'application/json;charset=UTF-8'
             }
             body([
                     name: "Test name",
@@ -21,7 +21,7 @@ Contract.make {
         }
     }
     response {
-        body("/receivePost-post")
+        body("/receive-post")
         status 200
     }
 }

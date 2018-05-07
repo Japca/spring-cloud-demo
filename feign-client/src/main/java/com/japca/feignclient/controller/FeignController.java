@@ -4,6 +4,8 @@ import com.japca.data.PostData;
 import com.japca.feignclient.ReceiverClient;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
@@ -20,9 +22,9 @@ public class FeignController {
 		return receiverClient.receive();
 	}
 
-	@GetMapping(value = "callPost")
-	public String callReceivePost() {
-		return receiverClient.receive(new PostData("Hi post", 23));
+	@PostMapping("callPost")
+	public String callReceivePost(@RequestBody PostData postData) {
+		return receiverClient.receive(postData);
 	}
 
 }

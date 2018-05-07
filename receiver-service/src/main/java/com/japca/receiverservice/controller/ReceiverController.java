@@ -20,11 +20,11 @@ public class ReceiverController {
 
 	@GetMapping(value = "/receive")
 	public String receiveGet() {
-		return "/receivePost-get";
+		return "/receive-get";
 	}
 
 	@PostMapping(value = "/receive")
 	public String receivePost(@RequestBody PostData postData) {
-		return  "/receivePost-post";
+		return  "/receive-post";
 	}
 }
