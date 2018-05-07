@@ -14,6 +14,7 @@ Contract.make {
 
         }
     }
+
     response {
         body("/restCall-get")
         status 200

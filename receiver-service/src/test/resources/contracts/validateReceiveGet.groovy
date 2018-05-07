@@ -15,7 +15,9 @@ Contract.make {
         }
     }
     response {
-        body("/receive-get")
+        body("/receivePost-get")
         status 200
     }
 }
+
+

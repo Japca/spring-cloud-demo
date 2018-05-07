@@ -1,9 +1,9 @@
 package com.japca.receiverservice.controller;
 
 import com.japca.data.PostData;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
@@ -13,18 +13,18 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class ReceiverController {
 
-	@RequestMapping(value = "/restCal", method = RequestMethod.GET)
+	@GetMapping(value = "/restCall")
 	public String restCall() {
-		return "/restCall-get";
+		return"/restCall-get";
 	}
 
-	@RequestMapping(value = "/receive", method = RequestMethod.GET)
-	public String receive() {
-		return "/receive-get";
+	@GetMapping(value = "/receive")
+	public String receiveGet() {
+		return "/receivePost-get";
 	}
 
-	@RequestMapping(value = "/receive", method = RequestMethod.POST)
-	public String receive(@RequestBody PostData postData) {
-		return  "/receive-post";
+	@PostMapping(value = "/receive")
+	public String receivePost(@RequestBody PostData postData) {
+		return  "/receivePost-post";
 	}
 }

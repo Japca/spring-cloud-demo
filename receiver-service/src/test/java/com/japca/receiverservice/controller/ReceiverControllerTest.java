@@ -19,7 +19,7 @@ import org.springframework.test.web.servlet.setup.StandaloneMockMvcBuilder;
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.MOCK)
 @DirtiesContext
 @AutoConfigureMessageVerifier
-public class ReceiverControllerTest {
+public abstract class ReceiverControllerTest {
 
 
 	@Autowired
