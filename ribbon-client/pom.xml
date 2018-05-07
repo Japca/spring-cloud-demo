@@ -94,24 +94,6 @@
             <scope>provided</scope>
         </dependency>
 
-
-        <dependency>
-            <groupId>org.arquillian.ape</groupId>
-            <artifactId>arquillian-ape-api</artifactId>
-            <version>2.0.0-alpha.7</version>
-        </dependency>
-        <dependency>
-            <groupId>org.arquillian.ape</groupId>
-            <artifactId>arquillian-ape-sql-standalone-core</artifactId>
-            <version>2.0.0-alpha.7</version>
-        </dependency>
-
-        <dependency>
-            <groupId>org.arquillian.ape</groupId>
-            <artifactId>arquillian-ape-sql-core-dbunit</artifactId>
-            <version>2.0.0-alpha.7</version>
-        </dependency>
-
         <dependency>
             <groupId>org.arquillian.ape</groupId>
             <artifactId>arquillian-ape-sql-standalone-dbunit</artifactId>
@@ -121,23 +103,8 @@
             <groupId>org.arquillian.ape</groupId>
             <artifactId>arquillian-ape-sql-standalone-flyway</artifactId>
             <version>2.0.0-alpha.7</version>
-
         </dependency>
-
-        <!--<dependency>-->
-            <!--<groupId>org.arquillian.ape</groupId>-->
-            <!--<artifactId>arquillian-ape-core</artifactId>-->
-            <!--<version>2.0.0-alpha.7</version>-->
-        <!--</dependency>-->
-
-        <!--<dependency>-->
-            <!--<groupId>org.arquillian.ape</groupId>-->
-            <!--<artifactId>arquillian-ape-api</artifactId>-->
-            <!--<version>2.0.0-alpha.7</version>-->
-        <!--</dependency>-->
-
-
-    </dependencies>
+   </dependencies>
 
 
     <build>

@@ -1,6 +1,5 @@
 package com.japca.ribbonclient.service;
 
-import com.japca.ribbonclient.entity.Record;
 import lombok.extern.slf4j.Slf4j;
 import org.arquillian.ape.junit.rule.ArquillianPersistenceRule;
 import org.arquillian.ape.rdbms.core.RdbmsPopulator;
@@ -15,7 +14,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import java.util.List;
+import static org.assertj.core.api.Assertions.assertThat;
 
 /**
  * Created by Jakub Krhovják on 5/7/18.
@@ -35,28 +34,25 @@ public class ArquillianApeRecordServiceTest {
 	@Autowired
 	private RecordService recordService;
 
+
 	@Before
 	public void setUp() throws Exception {
 		rdbmsPopulator.forUri("jdbc:postgresql://172.17.0.2:5432/postgres")
-				.withDriver(org.postgresql.Driver.class)
-				.withUsername("postgres")
-				.withPassword("postgres")
+				.fromSpringBootConfiguration()
 				.usingDataSet("test-data.yml")
 				.execute();
 	}
 
 	@Test
 	public void name() {
-		List<Record> records = recordService.getRecords();
-		log.info("---------------------------------------------------------------Records: ", records);
+		assertThat(recordService.getRecords()).hasSize(1);
 	}
 
 	@After
 	public void tearDown() throws Exception {
 		rdbmsPopulator.forUri("jdbc:postgresql://172.17.0.2:5432/postgres")
-				.withDriver(org.postgresql.Driver.class)
-				.withUsername("postgres")
-				.withPassword("postgres")
+				.fromSpringBootConfiguration()
+				.usingDataSet("test-data.yml")
 				.clean();
 	}
 }
