@@ -25,6 +25,9 @@ public class RecordService {
 		return recordDao.findAll();
 	}
 
+	public  Record findByName(String name) {
+		return recordDao.findByName(name);
+	}
 
 	public int getRecordCountDoubled() {
 		 List<Record> records = getRecords();

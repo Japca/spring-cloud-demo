@@ -10,4 +10,8 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface RecordDao extends JpaRepository<Record, Long> {
+
+	Record findByName(String name);
+
+
 }
