@@ -15,6 +15,7 @@ import org.springframework.web.client.RestTemplate;
 @SpringBootApplication
 @EnableDiscoveryClient
 @RestController
+
 //@RibbonClient(name = "receiver-service", configuration = HelloServiceConfiguration.class)
 public class RibbonClientApplication {
 

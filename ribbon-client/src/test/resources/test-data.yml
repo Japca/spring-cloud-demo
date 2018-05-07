@@ -1,0 +1,4 @@
+record:
+  - id: 2
+    name: "a name"
+    detail: "a detail"

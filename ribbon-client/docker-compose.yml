@@ -1,15 +1,15 @@
 version: '3'
 
 services:
-  ribbon-client:
-    image: jakubkrhovjak/ribbon-client
-    depends_on:
-      - postgres
-    ports:
-     - "8083:8080"
-    volumes:
-     - .:/data
-    network_mode: bridge
+#  ribbon-client:
+#    image: jakubkrhovjak/ribbon-client
+#    depends_on:
+#      - postgres
+#    ports:
+#     - "8083:8080"
+#    volumes:
+#     - .:/data
+#    network_mode: bridge
 
   postgres:
     container_name: postgres

@@ -4,6 +4,6 @@ package com.japca.ribbonclient;
 //@SpringBootTest
 public class RibbonClientApplicationTests {
 
-//	@Test	}
+
 
 }
