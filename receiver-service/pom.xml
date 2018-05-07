@@ -1,130 +1,130 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-	<modelVersion>4.0.0</modelVersion>
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
 
-	<artifactId>receiver-service</artifactId>
-	<version>1.0.0</version>
-	<packaging>jar</packaging>
+    <artifactId>receiver-service</artifactId>
+    <version>1.0.0</version>
+    <packaging>jar</packaging>
 
-	<name>receiver-service</name>
+    <name>receiver-service</name>
 
-	<parent>
-		<groupId>com.japca</groupId>
-		<artifactId>spring-cloud-demo</artifactId>
-		<version>1.0.0</version>
-	</parent>
+    <parent>
+        <groupId>com.japca</groupId>
+        <artifactId>spring-cloud-demo</artifactId>
+        <version>1.0.0</version>
+    </parent>
 
-	<dependencyManagement>
-		<dependencies>
-			<dependency>
-				<groupId>org.springframework.cloud</groupId>
-				<artifactId>spring-cloud-contract-dependencies</artifactId>
-				<version>${spring-cloud-contract.version}</version>
-				<type>pom</type>
-				<scope>import</scope>
-			</dependency>
-		</dependencies>
-	</dependencyManagement>
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-contract-dependencies</artifactId>
+                <version>${spring-cloud-contract.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
 
-	<dependencies>
+    <dependencies>
 
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-web</artifactId>
-		</dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
 
-		<dependency>
-			<groupId>com.japca</groupId>
-			<artifactId>data</artifactId>
-			<version>1.0.0</version>
-		</dependency>
+        <dependency>
+            <groupId>com.japca</groupId>
+            <artifactId>data</artifactId>
+            <version>1.0.0</version>
+        </dependency>
 
-		<dependency>
-			<groupId>org.springframework.cloud</groupId>
-			<artifactId>spring-cloud-starter-contract-verifier</artifactId>
-			<scope>test</scope>
-		</dependency>
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-contract-verifier</artifactId>
+            <scope>test</scope>
+        </dependency>
 
-	</dependencies>
+    </dependencies>
 
-	<build>
-		<finalName>${project.artifactId}</finalName>
-		<plugins>
-			<plugin>
-				<groupId>org.springframework.boot</groupId>
-				<artifactId>spring-boot-maven-plugin</artifactId>
-			</plugin>
+    <build>
+        <finalName>${project.artifactId}</finalName>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
 
-			<plugin>
-				<groupId>org.springframework.cloud</groupId>
-				<artifactId>spring-cloud-contract-maven-plugin</artifactId>
-				<version>${spring-cloud-contract.version}</version>
-				<extensions>true</extensions>
-				<configuration>
+            <plugin>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-contract-maven-plugin</artifactId>
+                <version>${spring-cloud-contract.version}</version>
+                <extensions>true</extensions>
+                <configuration>
 
-					<contractsDirectory>src/test/resources/contracts</contractsDirectory>
-					<baseClassForTests>
-						com.japca.receiverservice.controller.ReceiverControllerTest
-					</baseClassForTests>
-					<!--<packageWithBaseClasses>com.japca.receiverservice.controller.CallControllerTest</packageWithBaseClasses>-->
-				</configuration>
-				<executions>
-					<execution>
-						<goals>
-							<goal>convert</goal>
-							<goal>generateStubs</goal>
-							<goal>generateTests</goal>
-						</goals>
-					</execution>
-				</executions>
-			</plugin>
+                    <contractsDirectory>src/test/resources/contracts</contractsDirectory>
+                    <baseClassForTests>
+                        com.japca.receiverservice.controller.ReceiverControllerTest
+                    </baseClassForTests>
+                    <!--<packageWithBaseClasses>com.japca.receiverservice.controller.CallControllerTest</packageWithBaseClasses>-->
+                </configuration>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>convert</goal>
+                            <goal>generateStubs</goal>
+                            <goal>generateTests</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
 
-			<plugin>
-				<groupId>io.fabric8</groupId>
-				<artifactId>docker-maven-plugin</artifactId>
-				<version>0.24.0</version>
+            <plugin>
+                <groupId>io.fabric8</groupId>
+                <artifactId>docker-maven-plugin</artifactId>
+                <version>0.24.0</version>
 
-				<executions>
-					<execution>
-						<id>docker-build</id>
-						<goals>
-							<goal>build</goal>
-						</goals>
-					</execution>
-				</executions>
+                <executions>
+                    <execution>
+                        <id>docker-build</id>
+                        <goals>
+                            <goal>build</goal>
+                        </goals>
+                    </execution>
+                </executions>
 
-				<configuration>
-					<dockerHost>unix:///var/run/docker.sock</dockerHost>
-					<verbose>true</verbose>
-					<images>
-						<image>
-							<name>${docker.image.prefix}/${project.artifactId}</name>
-							<alias>${project.artifactId}</alias>
-							<build>
+                <configuration>
+                    <dockerHost>unix:///var/run/docker.sock</dockerHost>
+                    <verbose>true</verbose>
+                    <images>
+                        <image>
+                            <name>${docker.image.prefix}/${project.artifactId}</name>
+                            <alias>${project.artifactId}</alias>
+                            <build>
 
-								<dockerFileDir>${project.basedir}</dockerFileDir>
-								<!--copies artficact to docker build dir in target-->
-								<assembly>
-									<descriptorRef>artifact</descriptorRef>
-								</assembly>
-								<tags>
-									<tag>latest</tag>
-								</tags>
+                                <dockerFileDir>${project.basedir}</dockerFileDir>
+                                <!--copies artficact to docker build dir in target-->
+                                <assembly>
+                                    <descriptorRef>artifact</descriptorRef>
+                                </assembly>
+                                <tags>
+                                    <tag>latest</tag>
+                                </tags>
 
-							</build>
+                            </build>
 
-							<run>
-								<ports>
-									<port>8081:8080</port>
-								</ports>
-							</run>
-						</image>
+                            <run>
+                                <ports>
+                                    <port>8081:8080</port>
+                                </ports>
+                            </run>
+                        </image>
 
-					</images>
-				</configuration>
-			</plugin>
-		</plugins>
-	</build>
+                    </images>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
 
 </project>
